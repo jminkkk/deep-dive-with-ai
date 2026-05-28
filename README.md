@@ -1,49 +1,33 @@
-# ForkJoinPool from Scratch
+# Deep Dive with AI
 
-> ForkJoinPool의 핵심 원리를 **코드로 직접 구현**하며 이해하는 교육용 프로젝트.
+> AI(Claude)와 페어 학습하며, 핵심 원리를 **코드로 직접 구현**하고 검증한 기록.
 
-## 무엇을 배울 수 있나
+## Projects
 
-| 챕터 | 핵심 코드 | 테스트 |
-|------|---------|-------|
-| 1. Work-Stealing 알고리즘 | [WorkStealingDeque.java](src/main/java/com/jiminkkk/forkjoin/core/WorkStealingDeque.java) | 7개 |
-| 2. 워커 스레드 구조 | [WorkerThread.java](src/main/java/com/jiminkkk/forkjoin/core/WorkerThread.java) | 2개 |
-| 3. RecursiveTask 패턴 | [SumTask](src/main/java/com/jiminkkk/forkjoin/chapter3/SumTask.java), [MaxTask](src/main/java/com/jiminkkk/forkjoin/chapter3/MaxTask.java), [FibonacciTask](src/main/java/com/jiminkkk/forkjoin/chapter3/FibonacciTask.java) | 11개 |
-| 4. RecursiveAction 패턴 | [MergeSortAction](src/main/java/com/jiminkkk/forkjoin/chapter4/MergeSortAction.java), [ArrayInitAction](src/main/java/com/jiminkkk/forkjoin/chapter4/ArrayInitAction.java) | 9개 |
-| 5. 풀 모니터링 | [PoolMonitor.java](src/main/java/com/jiminkkk/forkjoin/chapter5/PoolMonitor.java) | 6개 |
-| 6. ManagedBlocker | [SimulatedIOBlocker.java](src/main/java/com/jiminkkk/forkjoin/chapter6/SimulatedIOBlocker.java) | 6개 |
+| 프로젝트 | 주제 | 핵심 키워드 |
+|----------|------|------------|
+| [java-async](java-async) | Java 비동기 처리 흐름 | Thread, ExecutorService, Future, CompletableFuture, @Async |
+| [java-forkjoinpool](java-forkjoinpool) | ForkJoinPool 내부 구현 | Work-Stealing, RecursiveTask/Action, ManagedBlocker |
+| [java-messagebroker](java-messagebroker) | Kafka 핵심 원리 구현 | CommitLog, Partition, Producer/Consumer, ConsumerGroup |
+| [java-threadpool](java-threadpool) | ThreadPool 동작 원리 | Work-Stealing Deque, WorkerThread, Pool Monitoring |
+| [java-virtualthread](java-virtualthread) | Virtual Thread 동작과 함정 | Continuation, Mounting, Pinning, ScopedValue |
+| [spring-stomp-websocket](spring-stomp-websocket) | Spring WebSocket/STOMP | Raw WebSocket, STOMP, 인증, 세션 관리, 스케일링 |
 
-## 30초 체험
+## How to Run
+
+각 프로젝트는 독립 Gradle 프로젝트입니다.
 
 ```bash
-git clone <repo>
-cd java-threadpool
+cd <project-name>
 ./gradlew test
 ```
 
-테스트가 통과하면 각 파일을 열어서 CURRICULUM.md의 순서대로 읽어라.
+## About
 
-## 학습 시작하기
+이 레포지토리는 AI(Claude Code)와의 페어 프로그래밍을 통해 학습한 프로젝트 모음입니다.
 
-**[📖 CURRICULUM.md](CURRICULUM.md)를 따라가는 것을 권장한다.**
-
-각 챕터는 "개념 설명 → 구현 코드 → 테스트 → 자기 점검"의 흐름으로 구성되어 있다.
-
-## 구현 범위와 한계
-
-| 항목 | 상태 | 비고 |
-|------|------|------|
-| Work-Stealing Deque 원리 | ✅ | synchronized 단순화 (실제는 CAS 기반 lock-free) |
-| RecursiveTask (결과 반환) | ✅ | Java 표준 RecursiveTask 직접 사용 |
-| RecursiveAction (void) | ✅ | Java 표준 RecursiveAction 직접 사용 |
-| 풀 모니터링 API | ✅ | 스냅샷 레코드로 캡처 |
-| ManagedBlocker 프로토콜 | ✅ | I/O 지연 시뮬레이션으로 구현 |
-| Lock-free WorkQueue | ❌ | CAS 기반 실제 구현은 제외 (복잡도 과도) |
-| CountedCompleter | ❌ | 스코프 외 |
-
-## 참고
-
-- [ForkJoinPool Javadoc (Java SE 21)](https://docs.oracle.com/en/java/javase/21/docs/api/java.base/java/util/concurrent/ForkJoinPool.html)
-- [ForkJoinTask Javadoc (Java SE 21)](https://docs.oracle.com/en/java/javase/21/docs/api/java.base/java/util/concurrent/ForkJoinTask.html)
-- [ForkJoinPool.ManagedBlocker Javadoc (Java SE 21)](https://docs.oracle.com/en/java/javase/21/docs/api/java.base/java/util/concurrent/ForkJoinPool.ManagedBlocker.html)
-- Doug Lea, "A Java Fork/Join Framework" (2000)
+각 프로젝트는 다음 흐름으로 진행됩니다:
+1. 커리큘럼 설계 (CURRICULUM.md)
+2. 핵심 개념을 코드로 직접 구현
+3. 테스트로 동작 검증
+4. 복기 및 리뷰 (REVIEW*.md)
