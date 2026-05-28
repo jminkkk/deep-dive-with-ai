@@ -1,0 +1,29 @@
+plugins {
+    id 'java'
+}
+
+group = 'com.jiminkkk'
+version = '1.0-SNAPSHOT'
+
+java {
+    sourceCompatibility = JavaVersion.VERSION_21
+    targetCompatibility = JavaVersion.VERSION_21
+}
+
+repositories {
+    mavenCentral()
+}
+
+dependencies {
+    testImplementation 'org.junit.jupiter:junit-jupiter:5.10.1'
+    testImplementation 'org.assertj:assertj-core:3.25.1'
+}
+
+test {
+    useJUnitPlatform()
+    // Chapter 4 (Pinning) 테스트 시 pinning 발생 지점을 콘솔에 출력
+    testLogging {
+        events 'passed', 'failed', 'skipped'
+        showStandardStreams = true
+    }
+}
