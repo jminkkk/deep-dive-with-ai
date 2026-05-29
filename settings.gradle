@@ -1,0 +1,8 @@
+rootProject.name = 'deep-dive-with-ai'
+
+include 'spring-stomp-websocket'
+include 'java-forkjoinpool'
+include 'java-threadpool'
+include 'java-messagebroker'
+include 'java-virtualthread'
+include 'java-async'
